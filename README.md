@@ -33,8 +33,11 @@ $ make clean
   # Listing 1.1 / 1.2 / 1.3 :
 
 El argumento de reciproco debe ser un numero entero.
+
 $ ./reciproco numero_entero
+
 Ejemplo:
+
 $ ./reciproco 5
 
 $ the reciprocal of 5 is 0.2
