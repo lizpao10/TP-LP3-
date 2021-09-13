@@ -34,11 +34,11 @@ $ make clean
 
 El argumento de reciproco debe ser un numero entero.
 
-$ ./reciproco numero_entero
+$ ./reciprocal numero_entero
 
 Ejemplo:
 
-$ ./reciproco 5
+$ ./reciprocal 5
 
 $ the reciprocal of 5 is 0.2
   
