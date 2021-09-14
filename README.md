@@ -48,5 +48,5 @@ $ the reciprocal of 5 is 0.2
 
   # Capitulo 2 al 5
 
-- Makefile2  
+- Makefile.in  
   
