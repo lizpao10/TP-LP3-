@@ -1,5 +1,9 @@
 # Trabajo Práctico N°1 de Lenguajes de Programación III
-
+Integrantes:
+- Carin Martinez
+- Paola Olmedo
+- Matias Franco
+- Willian Gonzalez
 # Comenzando
 Para empezar, descargamos el proyecto o clonamos el repositorio en una carpeta de su preferencia.
 
