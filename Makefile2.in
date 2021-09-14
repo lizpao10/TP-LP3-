@@ -1,0 +1,239 @@
+CC = gcc
+SRCDIR := src
+BINDIR := bin
+
+cap2_bin := $(bin)/capitulo_2
+cap3_bin := $(bin)/capitulo_3
+cap4_bin := $(bin)/capitulo_4
+cap5_bin := $(bin)/capitulo_5
+
+LINKERFLAG 	= -lm
+OBJECTS         = 
+ 
+
+
+
+PROGRAMS_CAP2   = capitulo2 capitulo2.9 src/capitulo_2/2.1/2.1 src/capitulo_2/2.2/2.2 src/capitulo_2/2.3/2.3 src/capitulo_2/2.4/2.4 src/capitulo_2/2.5/2.5 src/capitulo_2/2.6/2.6 
+PROGRAMS_CAP3   = src/capitulo_3/3.1/lprint-pid src/capitulo_3/3.2/system src/capitulo_3/3.3/fork src/capitulo_3/3.4/fork-exec src/capitulo_3/3.5/sigusr1 src/capitulo_3/3.6/zombie src/capitulo_3/3.7/sigchld
+PROGRAMS_CAP4	= src/capitulo_4/Listing4.1/thread-create src/capitulo_4/Listing4.2/thread-create2 src/capitulo_4/Listing4.3/thread-create2_1 src/capitulo_4/Listing4.4/primes src/capitulo_4/Listing4.5/detached src/capitulo_4/Listing4.6/critical-section src/capitulo_4/Listing4.7/tsd src/capitulo_4/Listing4.8/cleanup src/capitulo_4/Listing4.9/cxx-exit src/capitulo_4/Listing4.10/job-queue1 src/capitulo_4/Listing4.11/job-queue2 src/capitulo_4/Listing4.12/job-queue3 src/capitulo_4/Listing4.13/spin-condvar src/capitulo_4/Listing4.14/condvar src/capitulo_4/Listing4.15/thread-pid
+PROGRAMS_CAP5   = src/capitulo_5/5.1/shm src/capitulo_5/5.2/sem_all_deall src/capitulo_5/5.3/sem_init src/capitulo_5/5.4/sem_pv src/capitulo_5/5.5/mmap-write src/capitulo_5/5.6/mmap-read src/capitulo_5/5.7/pipe src/capitulo_5/5.8/dup2 src/capitulo_5/5.9/popen src/capitulo_5/5.10/socket-server src/capitulo_5/5.11/socket-client src/capitulo_5/5.12/socket-inet
+
+
+capitulo2: src/capitulo_2/2.8/2.8.c src/capitulo_2/2.8/2.7.o
+	mkdir -p $(BINDIR)/$(cap2_bin)/2.8 && gcc $(CFLAGS) -o $(BINDIR)/$(cap2_bin)/2.8/2.8 src/capitulo_2/2.8/2.8.c  src/capitulo_2/2.8/2.7.o
+
+src/capitulo_2/2.8/2.7.o: src/capitulo_2/2.7/2.7.c
+	gcc $(CFLAGS) -c src/capitulo_2/2.7/2.7.c -o src/capitulo_2/2.8/2.7.o 
+
+
+capitulo2.9: src/capitulo_2/2.9/2.9.c
+	mkdir -p $(BINDIR)/$(cap2_bin)/2.9 && gcc $(CFLAGS) -o $(BINDIR)/$(cap2_bin)/2.9/2.9 src/capitulo_2/2.9/2.9.c -L. -ltiff
+
+
+3.1		= src/capitulo_3/3.1/print-pid
+3.2		= src/capitulo_3/3.2/system
+3.3		= src/capitulo_3/3.3/fork
+3.4		= src/capitulo_3/3.4/fork-exec
+3.5		= src/capitulo_3/3.5/sigusr1
+3.6		= src/capitulo_3/3.6/zombie
+3.7		= src/capitulo_3/3.7/sigchld
+
+2.1		= src/capitulo_2/2.1/2.1
+2.2		= src/capitulo_2/2.2/2.2
+2.3		= src/capitulo_2/2.3/2.3
+2.4		= src/capitulo_2/2.4/2.4
+2.5		= src/capitulo_2/2.5/2.5
+2.6		= src/capitulo_2/2.6/2.6
+2.7		= capitulo2
+2.8		= capitulo2
+2.9		= capitulo2.9
+
+4.1		= src/capitulo_4/Listing4.1/thread-create
+4.2		= src/capitulo_4/Listing4.2/thread-create2
+4.3		= src/capitulo_4/Listing4.3/thread-create2_1
+4.4		= src/capitulo_4/Listing4.4/primes
+4.5		= src/capitulo_4/Listing4.5/detached
+4.6		= src/capitulo_4/Listing4.6/critical-section
+4.7		= src/capitulo_4/Listing4.7/tsd
+4.8		= src/capitulo_4/Listing4.8/cleanup
+4.9		= src/capitulo_4/Listing4.9/cxx-exit
+4.10		= src/capitulo_4/Listing4.10/job-queue1
+4.11		= src/capitulo_4/Listing4.11/job-queue2
+4.12		= src/capitulo_4/Listing4.12/job-queue3
+4.13		= src/capitulo_4/Listing4.13/spin-condvar
+4.14		= src/capitulo_4/Listing4.14/condvar
+4.15		= src/capitulo_4/Listing4.15/thread-pid
+
+5.1 		= src/capitulo_5/5.1/shm
+5.2 		= src/capitulo_5/5.2/sem_all_deall
+5.3 		= src/capitulo_5/5.3/sem_init
+5.4 		= src/capitulo_5/5.4/sem_pv
+5.5 		= src/capitulo_5/5.5/mmap-write
+5.6 		= src/capitulo_5/5.6/mmap-read
+5.7 		= src/capitulo_5/5.7/pipe
+5.8 		= src/capitulo_5/5.8/dup2
+5.9 		= src/capitulo_5/5.9/popen
+5.10 		= src/capitulo_5/5.10/socket-server
+5.11 		= src/capitulo_5/5.11/socket-client
+5.12 		= src/capitulo_5/5.12/socket-inet
+
+# Link programs with the pthread library.
+LDLIBS		+= -lpthread
+
+.PHONY:         all clean install listing_$(all)
+
+# ALL : make -f Makefile.in all
+
+all:	 $(PROGRAMS_CAP1) $(PROGRAMS_CAP2) $(PROGRAMS_CAP3) $(PROGRAMS_CAP4) $(PROGRAMS_CAP5) 
+	 mkdir -p $(BINDIR)/$(cap3_bin)/3.1 && mv -f $(3.1) $(BINDIR)/$(cap3_bin)/3.1
+	 mkdir -p $(BINDIR)/$(cap3_bin)/3.2 && mv -f $(3.2) $(BINDIR)/$(cap3_bin)/3.2
+	 mkdir -p $(BINDIR)/$(cap3_bin)/3.3 && mv -f $(3.3) $(BINDIR)/$(cap3_bin)/3.3
+	 mkdir -p $(BINDIR)/$(cap3_bin)/3.4 && mv -f $(3.4) $(BINDIR)/$(cap3_bin)/3.4
+	 mkdir -p $(BINDIR)/$(cap3_bin)/3.5 && mv -f $(3.5) $(BINDIR)/$(cap3_bin)/3.5
+	 mkdir -p $(BINDIR)/$(cap3_bin)/3.6 && mv -f $(3.6) $(BINDIR)/$(cap3_bin)/3.6
+	 mkdir -p $(BINDIR)/$(cap3_bin)/3.7 && mv -f $(3.7) $(BINDIR)/$(cap3_bin)/3.7
+
+	 mkdir -p $(BINDIR)/$(cap2_bin)/2.1 && mv -f $(2.1) $(BINDIR)/$(cap2_bin)/2.1
+	 mkdir -p $(BINDIR)/$(cap2_bin)/2.2 && mv -f $(2.2) $(BINDIR)/$(cap2_bin)/2.2
+	 mkdir -p $(BINDIR)/$(cap2_bin)/2.3 && mv -f $(2.3) $(BINDIR)/$(cap2_bin)/2.3
+	 mkdir -p $(BINDIR)/$(cap2_bin)/2.4 && mv -f $(2.4) $(BINDIR)/$(cap2_bin)/2.4
+	 mkdir -p $(BINDIR)/$(cap2_bin)/2.5 && mv -f $(2.5) $(BINDIR)/$(cap2_bin)/2.5
+	 mkdir -p $(BINDIR)/$(cap2_bin)/2.6 && mv -f $(2.6) $(BINDIR)/$(cap2_bin)/2.6
+	# mkdir -p $(BINDIR)/$(cap2_bin)/2.9 && mv -f $(2.9) $(BINDIR)/$(cap2_bin)/2.9
+
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.1 && mv -f $(4.1) $(BINDIR)/$(cap4_bin)/Listing4.1
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.2 && mv -f $(4.2) $(BINDIR)/$(cap4_bin)/Listing4.2
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.3 && mv -f $(4.3) $(BINDIR)/$(cap4_bin)/Listing4.3
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.4 && mv -f $(4.4) $(BINDIR)/$(cap4_bin)/Listing4.4
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.5 && mv -f $(4.5) $(BINDIR)/$(cap4_bin)/Listing4.5
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.6 && mv -f $(4.6) $(BINDIR)/$(cap4_bin)/Listing4.6
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.7 && mv -f $(4.7) $(BINDIR)/$(cap4_bin)/Listing4.7
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.8 && mv -f $(4.8) $(BINDIR)/$(cap4_bin)/Listing4.8
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.9 && mv -f $(4.9) $(BINDIR)/$(cap4_bin)/Listing4.9
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.10 && mv -f $(4.10) $(BINDIR)/$(cap4_bin)/Listing4.10
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.11 && mv -f $(4.11) $(BINDIR)/$(cap4_bin)/Listing4.11
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.12 && mv -f $(4.12) $(BINDIR)/$(cap4_bin)/Listing4.12
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.13 && mv -f $(4.13) $(BINDIR)/$(cap4_bin)/Listing4.13
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.14 && mv -f $(4.14) $(BINDIR)/$(cap4_bin)/Listing4.14
+	 mkdir -p $(BINDIR)/$(cap4_bin)/4.15 && mv -f $(4.15) $(BINDIR)/$(cap4_bin)/Listing4.15
+
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.1 && mv -f $(5.1) $(BINDIR)/$(cap5_bin)/5.1
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.2 && mv -f $(5.2) $(BINDIR)/$(cap5_bin)/5.2
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.3 && mv -f $(5.3) $(BINDIR)/$(cap5_bin)/5.3
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.4 && mv -f $(5.4) $(BINDIR)/$(cap5_bin)/5.4
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.5 && mv -f $(5.5) $(BINDIR)/$(cap5_bin)/5.5
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.6 && mv -f $(5.6) $(BINDIR)/$(cap5_bin)/5.6
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.7 && mv -f $(5.7) $(BINDIR)/$(cap5_bin)/5.7
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.8 && mv -f $(5.8) $(BINDIR)/$(cap5_bin)/5.8
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.9 && mv -f $(5.9) $(BINDIR)/$(cap5_bin)/5.9
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.10 && mv -f $(5.10) $(BINDIR)/$(cap5_bin)/5.10
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.11 && mv -f $(5.11) $(BINDIR)/$(cap5_bin)/5.11
+	mkdir -p $(BINDIR)/$(cap5_bin)/5.12 && mv -f $(5.12) $(BINDIR)/$(cap5_bin)/5.12
+
+# Clean : : make -f Makefile.in clean
+clean:	
+	$(RM) *.o *.a $(PROGRAMS_CAP2)
+	$(RM) *.o *.a $(PROGRAMS_CAP3)
+	$(RM) *.o *.a $(PROGRAMS_CAP4)
+	$(RM) *.o *.a $(PROGRAMS_CAP5)
+	$(RM) *.o *.a $(BINDIR)/*/*/*
+
+
+# make listing_X : : make -f Makefile.in listing_x 
+
+
+#CAP2
+listing_2.1:  $(OBJECTS) $(LIBRARIES) $(2.1)
+		mkdir -p $(BINDIR)/$(cap2_bin)/2.1 && mv -f $(2.1) $(BINDIR)/$(cap2_bin)/2.1
+listing_2.2:  $(OBJECTS) $(LIBRARIES) $(2.2)
+		mkdir -p $(BINDIR)/$(cap2_bin)/2.2 && mv -f $(2.2) $(BINDIR)/$(cap2_bin)/2.2
+listing_2.3:  $(OBJECTS) $(LIBRARIES) $(2.3)
+		mkdir -p $(BINDIR)/$(cap2_bin)/2.3 && mv -f $(2.3) $(BINDIR)/$(cap2_bin)/2.3
+listing_2.4:  $(OBJECTS) $(LIBRARIES) $(2.4)
+		mkdir -p $(BINDIR)/$(cap2_bin)/2.4 && mv -f $(2.4) $(BINDIR)/$(cap2_bin)/2.4
+listing_2.5:  $(OBJECTS) $(LIBRARIES) $(2.5)
+		mkdir -p $(BINDIR)/$(cap2_bin)/2.4 && mv -f $(2.5) $(BINDIR)/$(cap2_bin)/2.5
+listing_2.6:  $(OBJECTS) $(LIBRARIES) $(2.6)
+		mkdir -p $(BINDIR)/$(cap2_bin)/2.6 && mv -f $(2.6) $(BINDIR)/$(cap2_bin)/2.6
+listing_2.7:  $(OBJECTS) $(LIBRARIES) $(2.7)
+		mkdir -p $(BINDIR)/$(cap2_bin)/2.7 && mv -f $(2.7) $(BINDIR)/$(cap2_bin)/2.7
+listing_2.8:  $(OBJECTS) $(LIBRARIES) $(2.8)
+		
+listing_2.9:  $(OBJECTS) $(LIBRARIES) $(2.9)
+#		mkdir -p $(BINDIR)/$(cap2_bin)/2.9 && mv -f $(2.9) $(BINDIR)/$(cap2_bin)/2.9
+
+#CAP3
+listing_3.1:  $(OBJECTS) $(LIBRARIES) $(3.1)
+		mkdir -p $(BINDIR)/$(cap3_bin)/3.1 && mv -f $(3.1) $(BINDIR)/$(cap3_bin)/3.1
+listing_3.2:  $(OBJECTS) $(LIBRARIES) $(3.2)
+		mkdir -p $(BINDIR)/$(cap3_bin)/3.2 && mv -f $(3.2) $(BINDIR)/$(cap3_bin)/3.2
+listing_3.3:  $(OBJECTS) $(LIBRARIES) $(3.3)
+		mkdir -p $(BINDIR)/$(cap3_bin)/3.3 && mv -f $(3.3) $(BINDIR)/$(cap3_bin)/3.3
+listing_3.4:  $(OBJECTS) $(LIBRARIES) $(3.4)
+		mkdir -p $(BINDIR)/$(cap3_bin)/3.4 && mv -f $(3.4) $(BINDIR)/$(cap3_bin)/3.4
+listing_3.5:  $(OBJECTS) $(LIBRARIES) $(3.5)
+		mkdir -p $(BINDIR)/$(cap3_bin)/3.5 && mv -f $(3.5) $(BINDIR)/$(cap3_bin)/3.5
+listing_3.6:  $(OBJECTS) $(LIBRARIES) $(3.6)
+		mkdir -p $(BINDIR)/$(cap3_bin)/3.6 && mv -f $(3.6) $(BINDIR)/$(cap3_bin)/3.6
+listing_3.7:  $(OBJECTS) $(LIBRARIES) $(3.7)
+		mkdir -p $(BINDIR)/$(cap3_bin)/3.7 && mv -f $(3.7) $(BINDIR)/$(cap3_bin)/3.7
+
+#CAP4
+
+listing_4.1:  $(OBJECTS) $(LIBRARIES) $(4.1)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.1 && mv -f $(4.1) $(BINDIR)/$(cap4_bin)/Listing4.1
+listing_4.2:  $(OBJECTS) $(LIBRARIES) $(4.2)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.2 && mv -f $(4.2) $(BINDIR)/$(cap4_bin)/Listing4.2
+listing_4.3:  $(OBJECTS) $(LIBRARIES) $(4.3)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.3 && mv -f $(4.3) $(BINDIR)/$(cap4_bin)/Listing4.3
+listing_4.4:  $(OBJECTS) $(LIBRARIES) $(4.4)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.4 && mv -f $(4.4) $(BINDIR)/$(cap4_bin)/Listing4.4
+listing_4.5:  $(OBJECTS) $(LIBRARIES) $(4.5)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.5 && mv -f $(4.5) $(BINDIR)/$(cap4_bin)/Listing4.5
+listing_4.6:  $(OBJECTS) $(LIBRARIES) $(4.6)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.6 && mv -f $(4.6) $(BINDIR)/$(cap4_bin)/Listing4.6
+listing_4.7:  $(OBJECTS) $(LIBRARIES) $(4.7)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.7 && mv -f $(4.7) $(BINDIR)/$(cap4_bin)/Listing4.7
+listing_4.8:  $(OBJECTS) $(LIBRARIES) $(4.8)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.8 && mv -f $(4.8) $(BINDIR)/$(cap4_bin)/Listing4.8
+listing_4.9:  $(OBJECTS) $(LIBRARIES) $(4.9)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.9 && mv -f $(4.9) $(BINDIR)/$(cap4_bin)/Listing4.9
+listing_4.10:  $(OBJECTS) $(LIBRARIES) $(4.10)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.10 && mv -f $(4.10) $(BINDIR)/$(cap4_bin)/Listing4.10
+listing_4.11:  $(OBJECTS) $(LIBRARIES) $(4.11)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.11 && mv -f $(4.11) $(BINDIR)/$(cap4_bin)/Listing4.11
+listing_4.12:  $(OBJECTS) $(LIBRARIES) $(4.12)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.12 && mv -f $(4.12) $(BINDIR)/$(cap4_bin)/Listing4.12
+listing_4.13:  $(OBJECTS) $(LIBRARIES) $(4.13)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.13 && mv -f $(4.13) $(BINDIR)/$(cap4_bin)/Listing4.13
+listing_4.14:  $(OBJECTS) $(LIBRARIES) $(4.14)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.14 && mv -f $(4.14) $(BINDIR)/$(cap4_bin)/Listing4.14
+listing_4.15:  $(OBJECTS) $(LIBRARIES) $(4.15)
+		mkdir -p $(BINDIR)/$(cap4_bin)/Listing4.15 && mv -f $(4.15) $(BINDIR)/$(cap4_bin)/Listing4.15
+
+#CAP5
+listing_5.1:  $(OBJECTS) $(LIBRARIES) $(5.1)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.1 && mv -f $(5.1) $(BINDIR)/$(cap5_bin)/5.1
+listing_5.2:  $(OBJECTS) $(LIBRARIES) $(5.2)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.2 && mv -f $(5.2) $(BINDIR)/$(cap5_bin)/5.2
+listing_5.3:  $(OBJECTS) $(LIBRARIES) $(5.3)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.3 && mv -f $(5.3) $(BINDIR)/$(cap5_bin)/5.3
+listing_5.4:  $(OBJECTS) $(LIBRARIES) $(5.4)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.4 && mv -f $(5.4) $(BINDIR)/$(cap5_bin)/5.4
+listing_5.5:  $(OBJECTS) $(LIBRARIES) $(5.5)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.5 && mv -f $(5.5) $(BINDIR)/$(cap5_bin)/5.5
+listing_5.6:  $(OBJECTS) $(LIBRARIES) $(5.6)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.6 && mv -f $(5.6) $(BINDIR)/$(cap5_bin)/5.6
+listing_5.7:  $(OBJECTS) $(LIBRARIES) $(5.7)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.7 && mv -f $(5.7) $(BINDIR)/$(cap5_bin)/5.7
+listing_5.8:  $(OBJECTS) $(LIBRARIES) $(5.8)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.8 && mv -f $(5.8) $(BINDIR)/$(cap5_bin)/5.8
+listing_5.9:  $(OBJECTS) $(LIBRARIES) $(5.9)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.9 && mv -f $(5.9) $(BINDIR)/$(cap5_bin)/5.9
+listing_5.10:  $(OBJECTS) $(LIBRARIES) $(5.10)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.10 && mv -f $(5.10) $(BINDIR)/$(cap5_bin)/5.10
+listing_5.11:  $(OBJECTS) $(LIBRARIES) $(5.11)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.11 && mv -f $(5.11) $(BINDIR)/$(cap5_bin)/5.11
+listing_5.12:  $(OBJECTS) $(LIBRARIES) $(5.12)
+		mkdir -p $(BINDIR)/$(cap5_bin)/5.12 && mv -f $(5.12) $(BINDIR)/$(cap5_bin)/5.12
+
