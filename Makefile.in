@@ -13,7 +13,7 @@ OBJECTS         =
 
 
 
-PROGRAMS_CAP2   = capitulo2 capitulo2.9 src/capitulo_2/2.1/2.1 src/capitulo_2/2.2/2.2 src/capitulo_2/2.3/2.3 src/capitulo_2/2.4/2.4 src/capitulo_2/2.5/2.5 src/capitulo_2/2.6/2.6 
+PROGRAMS_CAP2   = capitulo2 capitulo2.9 src/capitulo_2/2.1/arglist src/capitulo_2/2.2/getopt_long src/capitulo_2/2.3/print_env src/capitulo_2/2.4/client src/capitulo_2/2.5/temp_file src/capitulo_2/2.6/readfile src/capitulo_2/2.7/test src/capitulo_2/2.8/app src/capitulo_2/2.9/tifftest
 PROGRAMS_CAP3   = src/capitulo_3/3.1/lprint-pid src/capitulo_3/3.2/system src/capitulo_3/3.3/fork src/capitulo_3/3.4/fork-exec src/capitulo_3/3.5/sigusr1 src/capitulo_3/3.6/zombie src/capitulo_3/3.7/sigchld
 PROGRAMS_CAP4	= src/capitulo_4/Listing4.1/thread-create src/capitulo_4/Listing4.2/thread-create2 src/capitulo_4/Listing4.3/thread-create2_1 src/capitulo_4/Listing4.4/primes src/capitulo_4/Listing4.5/detached src/capitulo_4/Listing4.6/critical-section src/capitulo_4/Listing4.7/tsd src/capitulo_4/Listing4.8/cleanup src/capitulo_4/Listing4.9/cxx-exit src/capitulo_4/Listing4.10/job-queue1 src/capitulo_4/Listing4.11/job-queue2 src/capitulo_4/Listing4.12/job-queue3 src/capitulo_4/Listing4.13/spin-condvar src/capitulo_4/Listing4.14/condvar src/capitulo_4/Listing4.15/thread-pid
 PROGRAMS_CAP5   = src/capitulo_5/5.1/shm src/capitulo_5/5.2/sem_all_deall src/capitulo_5/5.3/sem_init src/capitulo_5/5.4/sem_pv src/capitulo_5/5.5/mmap-write src/capitulo_5/5.6/mmap-read src/capitulo_5/5.7/pipe src/capitulo_5/5.8/dup2 src/capitulo_5/5.9/popen src/capitulo_5/5.10/socket-server src/capitulo_5/5.11/socket-client src/capitulo_5/5.12/socket-inet
@@ -38,15 +38,15 @@ capitulo2.9: src/capitulo_2/2.9/2.9.c
 3.6		= src/capitulo_3/3.6/zombie
 3.7		= src/capitulo_3/3.7/sigchld
 
-2.1		= src/capitulo_2/2.1/2.1
-2.2		= src/capitulo_2/2.2/2.2
-2.3		= src/capitulo_2/2.3/2.3
-2.4		= src/capitulo_2/2.4/2.4
-2.5		= src/capitulo_2/2.5/2.5
-2.6		= src/capitulo_2/2.6/2.6
-2.7		= capitulo2
-2.8		= capitulo2
-2.9		= capitulo2.9
+2.1		= src/capitulo_2/2.1/arglist
+2.2		= src/capitulo_2/2.2/getopt_long
+2.3		= src/capitulo_2/2.3/print_env
+2.4		= src/capitulo_2/2.4/client
+2.5		= src/capitulo_2/2.5/temp_file
+2.6		= src/capitulo_2/2.6/readfile
+2.7		= src/capitulo_2/2.7/test
+2.8		= src/capitulo_2/2.8/app
+2.9		= src/capitulo_2/2.9/tifftes
 
 4.1		= src/capitulo_4/Listing4.1/thread-create
 4.2		= src/capitulo_4/Listing4.2/thread-create2
@@ -236,4 +236,3 @@ listing_5.11:  $(OBJECTS) $(LIBRARIES) $(5.11)
 		mkdir -p $(BINDIR)/$(cap5_bin)/5.11 && mv -f $(5.11) $(BINDIR)/$(cap5_bin)/5.11
 listing_5.12:  $(OBJECTS) $(LIBRARIES) $(5.12)
 		mkdir -p $(BINDIR)/$(cap5_bin)/5.12 && mv -f $(5.12) $(BINDIR)/$(cap5_bin)/5.12
-
